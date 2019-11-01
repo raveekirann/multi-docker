@@ -1,26 +1,26 @@
 sudo: required
 services:
-  - docker
+   - docker
 
 before_install:
-  - docker build -t raveekirann/react-test -f ./client/Dockerfile.dev
+   - docker  build  -t raveekirann/react-test  -f ./client/Dockerfile.dev
 
 script:
-  - docker run -e CI=true USERNAME/react-test npm test
+   - docker  run  -e CI=true USERNAME/react-test npm test
 
 after_success:
-  - docker build -t raveekirann/multi-client ./client
-  - docker build -t raveekirann/multi-nginx ./nginx
-  - docker build -t raveekirann/multi-server ./server
-  - docker build -t raveekirann/multi-worker ./worker
- 
- 
-  # login to the docker CLI
-  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
-  #take the images and push to docker hub
+   - docker  build  -t raveekirann/multi-client  ./client
+   - docker  build  -t raveekirann/multi-nginx ./nginx
+   - docker  build  -t raveekirann/multi-server  ./server
+   - docker  build  -t raveekirann/multi-worker  ./worker
+  
+  
+   # login to  the  docker CLI
+   - echo  "$DOCKER_PASS" | docker  login  -u "$DOCKER_ID"  --password-stdin
+   #take the images  and  push to  docker hub
 
- - docker push raveekirann/multi-client
- - docker push raveekirann/multi-nginx
- - docker push raveekirann/multi-server
- - docker push raveekirann/multi-worker
+  -  docker push  raveekirann/multi-client
+  -  docker push  raveekirann/multi-nginx
+  -  docker push  raveekirann/multi-server
+  -  docker push  raveekirann/multi-worker
 
