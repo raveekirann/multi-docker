@@ -27,7 +27,7 @@
 			"image": "raveekirann/multi-nginx",
 			"hostname": "nginx",
 			"essential": true,
-			"PortMappings": [
+			"portMappings": [
 				{
 					"hostPort": 80,
 					"containerPort": 80
